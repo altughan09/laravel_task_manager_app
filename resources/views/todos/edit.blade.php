@@ -2,7 +2,7 @@
 @section('content')
 <div class="card text-white bg-dark my-4">
     <div class="card-body">
-        <h5 class="card-title">Create new item</h5>
+        <h5 class="card-title">Edit item</h5>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -12,17 +12,17 @@
                 </ul>
             </div>
         @endif
-        <form action="/store-todos" method="POST">
+        <form action="/todos/{{ $todo->id }}/update-todos" method="POST">
             @csrf
             <div class="form-group">
               <label for="labelforname">Name</label>
-              <input type="text" class="form-control" id="labelforname" name="name" placeholder="Name">
+              <input type="text" class="form-control" id="labelforname" name="name" value="{{ $todo->name }}">
             </div>
             <div class="form-group">
                 <label for="labelfordescription">Description</label>
-                <textarea name="description" placeholder="Description" id="labelfordescription" cols="5" rows="5" class="form-control"></textarea>
+                <textarea name="description" id="labelfordescription" cols="5" rows="5" class="form-control">{{ $todo->description }}</textarea>
             </div>
-            <button type="submit" class="btn btn-success mx-2 float-right">Create</button>
+            <button type="submit" class="btn btn-warning mx-2 float-right">Edit</button>
             <a href="/todos" class="btn btn-danger mx-2 float-right">Cancel</a>
           </form>
     </div>
