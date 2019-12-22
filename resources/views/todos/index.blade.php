@@ -16,9 +16,9 @@
                             <tr>
                                 <td>{{ $todo->name }}</td>
                                 @if ($todo->isCompleted == 0)
-                                    <td class="text-center align-middle"><i class="fas fa-check fa-lg text-success"></i></td>
-                                @else
                                     <td class="text-center align-middle"><i class="fas fa-times fa-lg text-danger"></i></td>
+                                @else
+                                    <td class="text-center align-middle"><i class="fas fa-check fa-lg text-success"></i></td>
                                 @endif
                                 <td class="text-center align-middle">
                                     <a href="/todos/{{$todo->id}}" class="btn btn-success btn-sm">View</a>
