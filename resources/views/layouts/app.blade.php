@@ -30,6 +30,19 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-8 offset-md-2">
+                @if (session()->has('success'))
+                    <div class="alert alert-success mt-2">
+                      {{ session()->get('success') }}
+                    </div>
+                @elseif(session()->has('update'))
+                    <div class="alert alert-warning mt-2">
+                      {{ session()->get('update') }}
+                    </div>
+                @elseif(session()->has('delete'))
+                    <div class="alert alert-danger mt-2">
+                      {{ session()->get('delete') }}
+                    </div>
+                @endif
                 @yield('content')
             </div>
         </div>
@@ -44,6 +57,13 @@
                 "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
             });
         } );
+    </script>
+    <script>
+          $(document).ready(function(){
+              setTimeout(function(){
+                $("div.alert").remove();
+              }, 3000 );
+          });
     </script>
 </body>
 </html>
